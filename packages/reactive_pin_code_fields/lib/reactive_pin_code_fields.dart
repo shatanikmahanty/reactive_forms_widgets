@@ -136,8 +136,7 @@ class ReactivePinCodeTextField<T> extends ReactiveFormField<T, String> {
     Color? cursorColor,
     double cursorWidth = 2,
     double? cursorHeight,
-    AutofillContextAction onAutoFillDisposeAction =
-        AutofillContextAction.commit,
+    AutofillContextAction onAutoFillDisposeAction = AutofillContextAction.commit,
     bool useExternalAutoFillGroup = false,
     String? hintCharacter,
     TextStyle? hintStyle,
@@ -147,6 +146,7 @@ class ReactivePinCodeTextField<T> extends ReactiveFormField<T, String> {
     TextDirection errorTextDirection = TextDirection.ltr,
     EdgeInsets errorTextMargin = EdgeInsets.zero,
     bool autoUnfocus = true,
+    bool showPasteConfirmationDialog = true,
   }) : super(
           builder: (field) {
             final state = field as _ReactivePinCodeTextFieldState<T>;
@@ -210,17 +210,16 @@ class ReactivePinCodeTextField<T> extends ReactiveFormField<T, String> {
               errorTextDirection: errorTextDirection,
               errorTextMargin: errorTextMargin,
               autoUnfocus: autoUnfocus,
+              showPasteConfirmationDialog: showPasteConfirmationDialog,
             );
           },
         );
 
   @override
-  ReactiveFormFieldState<T, String> createState() =>
-      _ReactivePinCodeTextFieldState<T>();
+  ReactiveFormFieldState<T, String> createState() => _ReactivePinCodeTextFieldState<T>();
 }
 
-class _ReactivePinCodeTextFieldState<T>
-    extends ReactiveFormFieldState<T, String> {
+class _ReactivePinCodeTextFieldState<T> extends ReactiveFormFieldState<T, String> {
   late TextEditingController _textController;
   FocusNode? _focusNode;
   late FocusController _focusController;
@@ -233,8 +232,7 @@ class _ReactivePinCodeTextFieldState<T>
     super.initState();
 
     final initialValue = value;
-    _textController = TextEditingController(
-        text: initialValue == null ? '' : initialValue.toString());
+    _textController = TextEditingController(text: initialValue == null ? '' : initialValue.toString());
   }
 
   @override
