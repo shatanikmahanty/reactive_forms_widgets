@@ -7,7 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   FormGroup buildForm() => fb.group({
         'input': FormControl<PhoneNumber>(
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
             isoCode: IsoCode.UA,
             nsn: '933456789',
           ),
+          disabled: true,
           validators: [
             // PhoneValidators.required,
             // PhoneValidators.valid,

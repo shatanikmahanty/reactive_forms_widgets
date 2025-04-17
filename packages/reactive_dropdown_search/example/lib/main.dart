@@ -65,6 +65,8 @@ class MyApp extends StatelessWidget {
                         disabledItemFn: (s) {
                           return s.startsWith('I');
                         },
+                          // fit: FlexFit.loose,
+                        constraints: const BoxConstraints(minHeight: 100, maxHeight: 400)
                       ),
                       items: (_, __) => const [
                         "Brazil",
@@ -85,7 +87,7 @@ class MyApp extends StatelessWidget {
                           border: OutlineInputBorder(),
                         ),
                       ),
-                      popupProps: PopupPropsMultiSelection.menu(
+                      popupProps: MultiSelectionPopupProps.menu(
                         showSelectedItems: true,
                         disabledItemFn: (s) {
                           return s.startsWith('I');

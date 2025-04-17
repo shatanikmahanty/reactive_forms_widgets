@@ -135,8 +135,8 @@ class ReactiveDropdownSearchMultiSelection<T, V>
     DropdownSearchFilterFn<V>? filterFn,
     DropdownSearchItemAsString<V>? itemAsString,
     DropdownSearchCompareFn<V>? compareFn,
-    PopupPropsMultiSelection<V> popupProps =
-        const PopupPropsMultiSelection.menu(),
+    MultiSelectionPopupProps<V> popupProps =
+        const MultiSelectionPopupProps.menu(),
     ScrollProps? selectedItemsScrollProps,
     BeforeChangeMultiSelection<V?>? onBeforeChange,
     FormFieldSetter<List<V>>? onSaved,
@@ -154,14 +154,13 @@ class ReactiveDropdownSearchMultiSelection<T, V>
                 )
               : null,
           builder: (field) {
-            final effectiveDecoration = dropdownDecoratorProps.decoration
-                .applyDefaults(Theme.of(field.context).inputDecorationTheme);
+            final effectiveDecoration = dropdownDecoratorProps.decoration?.applyDefaults(Theme.of(field.context).inputDecorationTheme);
 
             final errorText = field.errorText;
 
             return DropdownSearch<V>.multiSelection(
               key: widgetKey,
-              onChanged: (value) =>
+              onSelected: (value) =>
                   field.didChange(value.isEmpty ? null : value),
               popupProps: popupProps,
               selectedItems: field.value ?? [],
@@ -176,7 +175,7 @@ class ReactiveDropdownSearchMultiSelection<T, V>
               itemAsString: itemAsString,
               compareFn: compareFn,
               decoratorProps: DropDownDecoratorProps(
-                decoration: effectiveDecoration.copyWith(
+                decoration: effectiveDecoration?.copyWith(
                   errorText: errorBuilder == null ? errorText : null,
                   error: errorBuilder != null && errorText != null
                       ? DefaultTextStyle.merge(
@@ -187,6 +186,7 @@ class ReactiveDropdownSearchMultiSelection<T, V>
                       color:
                       Theme.of(field.context).colorScheme.error,
                     ).merge(effectiveDecoration.errorStyle),
+                    maxLines: effectiveDecoration.errorMaxLines,
                     child: errorBuilder.call(
                       field.context,
                       errorText,
