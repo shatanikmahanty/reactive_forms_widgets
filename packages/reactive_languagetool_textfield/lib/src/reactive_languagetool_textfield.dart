@@ -356,9 +356,14 @@ class _ReactiveLanguageToolTextFieldState<T>
   @override
   void onControlValueChanged(dynamic value) {
     final effectiveValue = (value == null) ? '' : value.toString();
+    final currentSelection = _textController.selection;
+    final newSelection = currentSelection.isValid &&
+            currentSelection.end <= effectiveValue.length
+        ? currentSelection
+        : TextSelection.collapsed(offset: effectiveValue.length);
     _textController.value = _textController.value.copyWith(
       text: effectiveValue,
-      selection: TextSelection.collapsed(offset: effectiveValue.length),
+      selection: newSelection,
       composing: TextRange.empty,
     );
 
