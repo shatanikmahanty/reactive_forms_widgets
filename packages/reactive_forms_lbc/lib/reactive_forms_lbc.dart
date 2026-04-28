@@ -16,6 +16,10 @@ export 'src/reactive_form_control_focus/reactive_form_control_focus_listener.dar
 export 'src/reactive_form_control_focus/reactive_form_control_focus_builder.dart';
 export 'src/reactive_form_control_focus/reactive_form_control_focus_consumer.dart';
 
+export 'src/reactive_form_array_collection/reactive_form_array_collection_listener.dart';
+export 'src/reactive_form_array_collection/reactive_form_array_collection_builder.dart';
+export 'src/reactive_form_array_collection/reactive_form_array_collection_consumer.dart';
+
 export 'src/typedef.dart';
 
 export 'package:nested/nested.dart';

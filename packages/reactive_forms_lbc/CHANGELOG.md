@@ -1,3 +1,7 @@
+## [5.0.4]
+
+* reactive_form_array_collection_*
+
 ## [5.0.3]
 
 * `notEquals` dynamic types as far as we do not care about T 
