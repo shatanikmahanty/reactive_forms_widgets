@@ -147,6 +147,7 @@ class ReactivePinCodeTextField<T> extends ReactiveFormField<T, String> {
     TextDirection errorTextDirection = TextDirection.ltr,
     EdgeInsets errorTextMargin = EdgeInsets.zero,
     bool autoUnfocus = true,
+    bool showPasteConfirmationDialog = true,
   }) : super(
           builder: (field) {
             final state = field as _ReactivePinCodeTextFieldState<T>;
@@ -210,6 +211,7 @@ class ReactivePinCodeTextField<T> extends ReactiveFormField<T, String> {
               errorTextDirection: errorTextDirection,
               errorTextMargin: errorTextMargin,
               autoUnfocus: autoUnfocus,
+              showPasteConfirmationDialog: showPasteConfirmationDialog,
             );
           },
         );
